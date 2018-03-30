@@ -1,0 +1,15 @@
+{
+  "name": "boxip",
+  "version": "1.0.0",
+  "description": "This node gives the IP address of the raspberry pi.",
+  "node-red": {
+    "nodes": {
+      "boxip": "boxip.js"
+    }
+  },
+  "dependencies": {
+    "ttbd-exec": "TheThingBox/ttbd-exec#f9d47d8"
+  },
+  "author": "http://www.digitalairways.com/",
+  "license": "http://www.wtfpl.net"
+}

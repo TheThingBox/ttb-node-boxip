@@ -1,0 +1,29 @@
+<script type="text/x-red" data-template-name="boxip">
+  <div class="form-row">
+    <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+    <input type="text" id="node-input-name" placeholder="Name">
+  </div>
+</script>
+<script type="text/x-red" data-help-name="boxip">
+  <p>Sends in msg.<b>boxip</b> the device current IP address.</p>
+  <p>The second output is unused.</p>
+</script>
+<script type="text/javascript">
+  RED.nodes.registerType('boxip', {
+    category: "advanced",
+    defaults: {
+      name: { value: "" }
+    },
+    inputs:1,
+    outputs:1,
+    color: "#fff",
+    paletteLabel: "box IP",
+    icon: "debug.png",
+    label: function() {
+      return this.name || "box IP";
+    },
+    labelStyle: function() {
+      return this.name ? "node_label_italic":"";
+    }
+  });
+</script>
