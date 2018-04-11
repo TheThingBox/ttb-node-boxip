@@ -8,12 +8,14 @@ module.exports = function(RED) {
     var opt = {hydra_exec_host: "mosquitto"};
 
     this.on('input', function (msg) {
-      var defaultIp = "127.0.0.1";
+      var ip = "127.0.0.1";
       exec('hostname -I', opt, function(err, stdout, stderr){
         if(!stdout){
-          stdout = defaultIp
+          let ips = stdout.split(' ').filter(e => !e.startsWith('169.254') && !e.startsWith('172.'))
+          if(ips.length !== 0){
+            ip = ips[0]
+          }
         }
-        let ip = stdout.split(' ')[0]
         msg.boxip = ip;
         msg.payload = msg.boxip;
         msg.message = "The IP Address is " + msg.boxip;
