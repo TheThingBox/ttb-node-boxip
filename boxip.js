@@ -5,10 +5,11 @@ module.exports = function(RED) {
   function main(config) {
     RED.nodes.createNode(this,config);
     var node = this;
+    var opt = {hydra_exec_host: "mosquitto"};
 
     this.on('input', function (msg) {
       var defaultIp = "127.0.0.1";
-      exec('hostname -I', function(err, stdout, stderr){
+      exec('hostname -I', opt, function(err, stdout, stderr){
         if(!stdout){
           stdout = defaultIp
         }
