@@ -10,7 +10,8 @@ module.exports = function(RED) {
     this.on('input', function (msg) {
       var ip = "127.0.0.1";
       exec('hostname -I', opt, function(err, stdout, stderr){
-        if(!stdout){
+        if(stdout){
+          stdout = stdout.replace(/\n/g, ' ').trim()
           let ips = stdout.split(' ').filter(e => !e.startsWith('169.254') && !e.startsWith('172.'))
           if(ips.length !== 0){
             ip = ips[0]
