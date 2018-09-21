@@ -12,7 +12,7 @@ module.exports = function(RED) {
       exec('hostname -I', opt, function(err, stdout, stderr){
         if(stdout){
           stdout = stdout.replace(/\n/g, ' ').trim()
-          let ips = stdout.split(' ').filter(e => !e.startsWith('169.254') && !e.startsWith('172.'))
+          let ips = stdout.split(' ').filter(e => !e.startsWith('169.254') && !e.startsWith('172.17') && !e.startsWith('172.18'))
           if(ips.length !== 0){
             ip = ips[0]
           }
